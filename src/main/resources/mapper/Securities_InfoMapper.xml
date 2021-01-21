@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mhao.mall.dao.Securities_InfoMapper">
+  <resultMap id="BaseResultMap" type="com.mhao.mall.pojo.Securities_Info">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="OFF_INSTOR" jdbcType="VARCHAR" property="offInstor" />
+    <result column="ALCATION_CODE" jdbcType="VARCHAR" property="alcationCode" />
+    <result column="HERARCHY" jdbcType="VARCHAR" property="herarchy" />
+    <result column="ALCATION_NAME" jdbcType="VARCHAR" property="alcationName" />
+    <result column="SECACT_NUM_SHEN" jdbcType="VARCHAR" property="secactNumShen" />
+    <result column="SECACT_NUM_SHANG" jdbcType="VARCHAR" property="secactNumShang" />
+    <result column="FUND_CODE" jdbcType="VARCHAR" property="fundCode" />
+    <result column="INSTOR_NAME" jdbcType="VARCHAR" property="instorName" />
+    <result column="ID_TYPE" jdbcType="VARCHAR" property="idType" />
+    <result column="ID_NUMBER" jdbcType="VARCHAR" property="idNumber" />
+    <result column="CONTRIBT_AMOUNT" jdbcType="DOUBLE" property="contribtAmount" />
+    <result column="CONTRIBT_PERCENT" jdbcType="VARCHAR" property="contribtPercent" />
+    <result column="CONTRIBT_SUN_PERCENT" jdbcType="VARCHAR" property="contribtSunPercent" />
+    <result column="WHETH_SELF" jdbcType="VARCHAR" property="whethSelf" />
+    <result column="INQUIRY_NAME" jdbcType="VARCHAR" property="inquiryName" />
+    <result column="ALCATION_TYPE" jdbcType="VARCHAR" property="alcationType" />
+    <result column="FUND_TYPE" jdbcType="VARCHAR" property="fundType" />
+    <result column="JOIN_TYPE" jdbcType="VARCHAR" property="joinType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, OFF_INSTOR, ALCATION_CODE, HERARCHY, ALCATION_NAME, SECACT_NUM_SHEN, SECACT_NUM_SHANG, 
+    FUND_CODE, INSTOR_NAME, ID_TYPE, ID_NUMBER, CONTRIBT_AMOUNT, CONTRIBT_PERCENT, CONTRIBT_SUN_PERCENT, 
+    WHETH_SELF, INQUIRY_NAME, ALCATION_TYPE, FUND_TYPE, JOIN_TYPE
+  </sql>
+
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from securities_info
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from securities_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from securities_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mhao.mall.pojo.Securities_Info">
+    insert into securities_info (ID, OFF_INSTOR, ALCATION_CODE, 
+      HERARCHY, ALCATION_NAME, SECACT_NUM_SHEN, 
+      SECACT_NUM_SHANG, FUND_CODE, INSTOR_NAME, 
+      ID_TYPE, ID_NUMBER, CONTRIBT_AMOUNT, 
+      CONTRIBT_PERCENT, CONTRIBT_SUN_PERCENT, WHETH_SELF, 
+      INQUIRY_NAME, ALCATION_TYPE, FUND_TYPE, 
+      JOIN_TYPE)
+    values (#{id,jdbcType=INTEGER}, #{offInstor,jdbcType=VARCHAR}, #{alcationCode,jdbcType=VARCHAR}, 
+      #{herarchy,jdbcType=VARCHAR}, #{alcationName,jdbcType=VARCHAR}, #{secactNumShen,jdbcType=VARCHAR}, 
+      #{secactNumShang,jdbcType=VARCHAR}, #{fundCode,jdbcType=VARCHAR}, #{instorName,jdbcType=VARCHAR}, 
+      #{idType,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR}, #{contribtAmount,jdbcType=DOUBLE}, 
+      #{contribtPercent,jdbcType=VARCHAR}, #{contribtSunPercent,jdbcType=VARCHAR}, #{whethSelf,jdbcType=VARCHAR}, 
+      #{inquiryName,jdbcType=VARCHAR}, #{alcationType,jdbcType=VARCHAR}, #{fundType,jdbcType=VARCHAR}, 
+      #{joinType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhao.mall.pojo.Securities_Info">
+    insert into securities_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="offInstor != null">
+        OFF_INSTOR,
+      </if>
+      <if test="alcationCode != null">
+        ALCATION_CODE,
+      </if>
+      <if test="herarchy != null">
+        HERARCHY,
+      </if>
+      <if test="alcationName != null">
+        ALCATION_NAME,
+      </if>
+      <if test="secactNumShen != null">
+        SECACT_NUM_SHEN,
+      </if>
+      <if test="secactNumShang != null">
+        SECACT_NUM_SHANG,
+      </if>
+      <if test="fundCode != null">
+        FUND_CODE,
+      </if>
+      <if test="instorName != null">
+        INSTOR_NAME,
+      </if>
+      <if test="idType != null">
+        ID_TYPE,
+      </if>
+      <if test="idNumber != null">
+        ID_NUMBER,
+      </if>
+      <if test="contribtAmount != null">
+        CONTRIBT_AMOUNT,
+      </if>
+      <if test="contribtPercent != null">
+        CONTRIBT_PERCENT,
+      </if>
+      <if test="contribtSunPercent != null">
+        CONTRIBT_SUN_PERCENT,
+      </if>
+      <if test="whethSelf != null">
+        WHETH_SELF,
+      </if>
+      <if test="inquiryName != null">
+        INQUIRY_NAME,
+      </if>
+      <if test="alcationType != null">
+        ALCATION_TYPE,
+      </if>
+      <if test="fundType != null">
+        FUND_TYPE,
+      </if>
+      <if test="joinType != null">
+        JOIN_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="offInstor != null">
+        #{offInstor,jdbcType=VARCHAR},
+      </if>
+      <if test="alcationCode != null">
+        #{alcationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="herarchy != null">
+        #{herarchy,jdbcType=VARCHAR},
+      </if>
+      <if test="alcationName != null">
+        #{alcationName,jdbcType=VARCHAR},
+      </if>
+      <if test="secactNumShen != null">
+        #{secactNumShen,jdbcType=VARCHAR},
+      </if>
+      <if test="secactNumShang != null">
+        #{secactNumShang,jdbcType=VARCHAR},
+      </if>
+      <if test="fundCode != null">
+        #{fundCode,jdbcType=VARCHAR},
+      </if>
+      <if test="instorName != null">
+        #{instorName,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contribtAmount != null">
+        #{contribtAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="contribtPercent != null">
+        #{contribtPercent,jdbcType=VARCHAR},
+      </if>
+      <if test="contribtSunPercent != null">
+        #{contribtSunPercent,jdbcType=VARCHAR},
+      </if>
+      <if test="whethSelf != null">
+        #{whethSelf,jdbcType=VARCHAR},
+      </if>
+      <if test="inquiryName != null">
+        #{inquiryName,jdbcType=VARCHAR},
+      </if>
+      <if test="alcationType != null">
+        #{alcationType,jdbcType=VARCHAR},
+      </if>
+      <if test="fundType != null">
+        #{fundType,jdbcType=VARCHAR},
+      </if>
+      <if test="joinType != null">
+        #{joinType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mhao.mall.pojo.Securities_Info">
+    update securities_info
+    <set>
+      <if test="offInstor != null">
+        OFF_INSTOR = #{offInstor,jdbcType=VARCHAR},
+      </if>
+      <if test="alcationCode != null">
+        ALCATION_CODE = #{alcationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="herarchy != null">
+        HERARCHY = #{herarchy,jdbcType=VARCHAR},
+      </if>
+      <if test="alcationName != null">
+        ALCATION_NAME = #{alcationName,jdbcType=VARCHAR},
+      </if>
+      <if test="secactNumShen != null">
+        SECACT_NUM_SHEN = #{secactNumShen,jdbcType=VARCHAR},
+      </if>
+      <if test="secactNumShang != null">
+        SECACT_NUM_SHANG = #{secactNumShang,jdbcType=VARCHAR},
+      </if>
+      <if test="fundCode != null">
+        FUND_CODE = #{fundCode,jdbcType=VARCHAR},
+      </if>
+      <if test="instorName != null">
+        INSTOR_NAME = #{instorName,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        ID_TYPE = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contribtAmount != null">
+        CONTRIBT_AMOUNT = #{contribtAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="contribtPercent != null">
+        CONTRIBT_PERCENT = #{contribtPercent,jdbcType=VARCHAR},
+      </if>
+      <if test="contribtSunPercent != null">
+        CONTRIBT_SUN_PERCENT = #{contribtSunPercent,jdbcType=VARCHAR},
+      </if>
+      <if test="whethSelf != null">
+        WHETH_SELF = #{whethSelf,jdbcType=VARCHAR},
+      </if>
+      <if test="inquiryName != null">
+        INQUIRY_NAME = #{inquiryName,jdbcType=VARCHAR},
+      </if>
+      <if test="alcationType != null">
+        ALCATION_TYPE = #{alcationType,jdbcType=VARCHAR},
+      </if>
+      <if test="fundType != null">
+        FUND_TYPE = #{fundType,jdbcType=VARCHAR},
+      </if>
+      <if test="joinType != null">
+        JOIN_TYPE = #{joinType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mhao.mall.pojo.Securities_Info">
+    update securities_info
+    set OFF_INSTOR = #{offInstor,jdbcType=VARCHAR},
+      ALCATION_CODE = #{alcationCode,jdbcType=VARCHAR},
+      HERARCHY = #{herarchy,jdbcType=VARCHAR},
+      ALCATION_NAME = #{alcationName,jdbcType=VARCHAR},
+      SECACT_NUM_SHEN = #{secactNumShen,jdbcType=VARCHAR},
+      SECACT_NUM_SHANG = #{secactNumShang,jdbcType=VARCHAR},
+      FUND_CODE = #{fundCode,jdbcType=VARCHAR},
+      INSTOR_NAME = #{instorName,jdbcType=VARCHAR},
+      ID_TYPE = #{idType,jdbcType=VARCHAR},
+      ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
+      CONTRIBT_AMOUNT = #{contribtAmount,jdbcType=DOUBLE},
+      CONTRIBT_PERCENT = #{contribtPercent,jdbcType=VARCHAR},
+      CONTRIBT_SUN_PERCENT = #{contribtSunPercent,jdbcType=VARCHAR},
+      WHETH_SELF = #{whethSelf,jdbcType=VARCHAR},
+      INQUIRY_NAME = #{inquiryName,jdbcType=VARCHAR},
+      ALCATION_TYPE = #{alcationType,jdbcType=VARCHAR},
+      FUND_TYPE = #{fundType,jdbcType=VARCHAR},
+      JOIN_TYPE = #{joinType,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
